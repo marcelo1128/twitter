@@ -1,14 +1,12 @@
-package twitter;
 
 public class User {
-	
 	private String username;
 	private String password;
 	private String email;
 	private String alias;
 	private int followers, tweetCount,  following;
 	
-	///nick name
+	
 	public String getAlias(){
 		return alias;
 	}
@@ -34,8 +32,6 @@ public class User {
 	public int getFollowing(){
 		return following;
 	}
-	
-	
 	public User (){
 		username = " ";
 		password = " ";
