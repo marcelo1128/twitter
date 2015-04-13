@@ -19,7 +19,12 @@ import javax.swing.JTextField;
 public class home extends JFrame implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
+		
 	
+	User currentUser=new User();
+	
+	//JLabel instructions = new JLabel("<html>Follow the instructions on the <br> exam to use this program<html>");
+
 	JLabel labelsearch;
 	//JLabel labelPass;
 	JTextField textsearch;
@@ -31,6 +36,34 @@ public class home extends JFrame implements ActionListener {
 	JPanel panelThree;
 	JDialog dialog;
 	text stuff;
+	JLabel instructions=new JLabel();
+	JScrollPane scrollPane;
+	JTextArea textforTweet;
+
+	
+	
+	
+	public void loginUser(User current){
+		currentUser=current;
+ 
+		showmain.dispose();
+		System.out.println(currentUser.getUsername());
+		System.out.println("<html>welcome!"+currentUser.getUsername()+"<br>"+currentUser.getTweetc()+" "+currentUser.getFollowing()+" "+currentUser.getFollowers()+ "<html>");
+		
+		instructions.setText("<html>welcome!"+currentUser.getUsername()+"<br>"+currentUser.getTweetc()+" "+currentUser.getFollowing()+" "+currentUser.getFollowers()+ "<html>");
+
+		instructions.setBounds(0,0,200,200);
+		
+		panelThree.add(instructions);
+		showmain.show(panelThree);
+	
+		
+		
+	}
+	
+
+	//shows the graphics 
+	shows1 showmain=new shows1();
 	public home() {
 		
 		panelThree = new JPanel();
@@ -45,14 +78,7 @@ public class home extends JFrame implements ActionListener {
 		textsearch = new JTextField(25);
 		searchB=new JButton("Search");
 		
-		
-		//////////////////////////////////////////////////////////////////////////////
-		////get this to do manual changes////create a class for it or something///////
-		//////////////////////////////////////////////////////////////////////////////
-		
-	    JLabel instructions = new JLabel("Follow the instructions on the exam to use this program");
-	    instructions.setBounds(0, 200,90,20);
-	    panelThree.add(instructions);
+
 	 
 		System.out.println("yo wtf?");
 
@@ -84,14 +110,15 @@ public class home extends JFrame implements ActionListener {
 		String text1=" what's on your mind........";
 		JTextArea textArea2 = new JTextArea(text, 5, 10);
 		//textArea2.setPreferredSize(new Dimension(100, 100));
-	    JScrollPane scrollPane = new JScrollPane(textArea2, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	    scrollPane = new JScrollPane(textArea2, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
-	    JTextArea textArea3 = new JTextArea(text1, 5, 10);
+	    textforTweet = new JTextArea(text1, 5, 10);
 	    JButton text3 = new JButton("Tweet");
 		text3.setBounds(704,176,90,20);
-		textArea3.setBounds(280,75,513,100);
+		textforTweet.setBounds(280,75,513,100);
 		
-		    
+
+	    textforTweet.setLineWrap(true);
 	    textArea2.setLineWrap(true);
 		   
 		scrollPane.setBounds(280,200,510,510);
@@ -105,48 +132,28 @@ public class home extends JFrame implements ActionListener {
 		// panelThree.add(textArea2);
 		panelThree.add(scrollPane);
 		panelThree.add(text3);
-		panelThree.add(textArea3);
+		panelThree.add(textforTweet);
 		
 		
 		
-		this.shows1(panelThree);
+		showmain.show(panelThree);
 		
-	
+
 	  
   }		
 	
 	
-		public void shows1(JPanel b){
-		
-			
-			dialog = new JDialog();
-		       
-			dialog.setResizable(true);
-				
-			//dialog.getContentPane().add(stuff);
-			//dialog.getContentPane().add(search);
-			//dialog.getContentPane().setLayout(new FlowLayout());
-			dialog.getContentPane().add(b);
-			dialog.setTitle("Welcome to twitter");
-				
-				
-		 
-			dialog.setSize(1080, 750);
-			dialog.setLocationRelativeTo(null); // place in center of screen
-			dialog.setBackground(Color.CYAN);
-				
-				
-			dialog.setModal(true);
-				
-			dialog.setVisible(true);
-			
-		}
-
 		
 		
 	      public void actionPerformed(ActionEvent e) {
 	          if (e.getSource() == hometab) {
-	              dialog.dispose();
+	        	  showmain.dispose();
+		      	   
+	        	  panelThree.remove(instructions);
+	        	  this.loginUser(currentUser);
+	        	 
+	    
+	              
 	          }else if (e.getSource() == notificationtab) {
 	              System.exit(0);
 	          }
