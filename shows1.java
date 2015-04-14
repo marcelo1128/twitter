@@ -38,7 +38,7 @@ public class shows1{
 	dialog.setModal(true);
 		
 	dialog.setVisible(true);
-
+	
 	}
 	public void dispose(){
 		dialog.dispose();

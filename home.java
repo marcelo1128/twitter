@@ -4,6 +4,7 @@ package twitter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -39,14 +40,17 @@ public class home extends JFrame implements ActionListener {
 	JLabel instructions=new JLabel();
 	JScrollPane scrollPane;
 	JTextArea textforTweet;
-
+	ArrayList message=new ArrayList();
 	
 	
+	public void userMessages(ArrayList stringMessages){
+		message=stringMessages;
+	}
 	
 	public void loginUser(User current){
 		currentUser=current;
  
-		showmain.dispose();
+		//showmain.dispose();
 		System.out.println(currentUser.getUsername());
 		System.out.println("<html>welcome!"+currentUser.getUsername()+"<br>"+currentUser.getTweetc()+" "+currentUser.getFollowing()+" "+currentUser.getFollowers()+ "<html>");
 		
@@ -134,12 +138,6 @@ public class home extends JFrame implements ActionListener {
 		panelThree.add(text3);
 		panelThree.add(textforTweet);
 		
-		
-		
-		showmain.show(panelThree);
-		
-
-	  
   }		
 	
 	
@@ -152,7 +150,7 @@ public class home extends JFrame implements ActionListener {
 	        	  panelThree.remove(instructions);
 	        	  this.loginUser(currentUser);
 	        	 
-	    
+	        	 
 	              
 	          }else if (e.getSource() == notificationtab) {
 	              System.exit(0);
