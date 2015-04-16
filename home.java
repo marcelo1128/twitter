@@ -42,7 +42,9 @@ public class home extends JFrame implements ActionListener {
 	JTextArea textforTweet;
 	ArrayList message=new ArrayList();
 	
-	
+	//shows the graphics 
+	shows1 showmain=new shows1();
+		
 	public void userMessages(ArrayList stringMessages){
 		message=stringMessages;
 	}
@@ -66,8 +68,7 @@ public class home extends JFrame implements ActionListener {
 	}
 	
 
-	//shows the graphics 
-	shows1 showmain=new shows1();
+	
 	public home() {
 		
 		panelThree = new JPanel();

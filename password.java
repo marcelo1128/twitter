@@ -10,24 +10,37 @@ public class password extends JDialog implements ActionListener{
 	JTextField textName;
 	JPasswordField passField;
 	JButton okButton;
+	JButton createButton;
 	JButton cancelButton;
 	JDialog dialog;
 	shows1 show;
+	JPanel panelThree;
+	
+	String randomuser="marcelo";
+	String randompass="maldonado";
+
+	
 	public password() {
 		JPanel panelOne = new JPanel();
-		labelName = new JLabel("Name");
+		labelName = new JLabel("Name:");
+		labelName.setForeground (Color.GREEN);
 		textName = new JTextField(15);
 		
 		JPanel panelTwo = new JPanel();
-		labelPass = new JLabel("Password");
+		labelPass = new JLabel("Password:");
+		labelPass.setForeground (Color.GREEN);
 		passField = new JPasswordField(15);
 		
-		JPanel panelThree = new JPanel();
+		panelThree = new JPanel();
 		panelThree.setLayout(null);
 		okButton = new JButton("OK");
+		createButton = new JButton("Create");
 		cancelButton = new JButton("Cancel");
 		okButton.addActionListener(this);
+		createButton.addActionListener(this);
 		cancelButton.addActionListener(this);
+		
+		panelThree.add(createButton);
 		panelThree.add(okButton);
 		panelThree.add(cancelButton);
 		panelThree.add(labelPass);
@@ -35,12 +48,20 @@ public class password extends JDialog implements ActionListener{
 		panelThree.add(labelName);
 		panelThree.add(textName);
 		
-		okButton.setBounds(0,50,90,20);
-		cancelButton.setBounds(90,50,120,20);
-		labelPass.setBounds(210,50,100,20);
-		textName.setBounds(787,50,80,25);
-		passField.setBounds(860, 50, 160, 25);
 		
+		//logo
+		JLabel logo=new JLabel(new ImageIcon("logo.png"));
+		panelThree.add(logo);
+		logo.setBounds(150,0,700,750);
+		
+		createButton.setBounds(475,330,90,20);
+		okButton.setBounds(430,300,90,20);
+		cancelButton.setBounds(520,300,90,20);
+		labelName.setBounds(365,240,100,20);
+		labelPass.setBounds(365,270,100,20);
+		textName.setBounds(425,240,188,25);
+		passField.setBounds(425, 270, 188, 25);
+		panelThree.setBackground(Color.black);
 		
 		show=new shows1();
 		
@@ -52,7 +73,21 @@ public class password extends JDialog implements ActionListener{
 	  
 	      public void actionPerformed(ActionEvent e) {
 	          if (e.getSource() == okButton) {
-	        	  System.exit(0);
+	        	  //System.exit(0);
+	        	  String username=textName.getText();
+	        	  String password=String.valueOf(passField.getPassword());
+	        	 
+	        	  
+	        	  if(username.equals(randomuser) && password.equals(randompass)){
+	        		  System.out.println("user exist");
+	        		  show.dialog.setVisible(false);
+	        	  }
+	        	  else{
+	        		  System.out.println("user does not exist");
+	        		
+	        		  
+	        	  }
+	        	  
 	          } else if (e.getSource() == cancelButton) {
 	              System.exit(0);
 	          }
@@ -65,5 +100,6 @@ public class password extends JDialog implements ActionListener{
 	      public String getPassword() {
 	          return String.valueOf(passField.getPassword());
 	      }
+	      
 	  
 }

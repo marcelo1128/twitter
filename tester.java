@@ -4,7 +4,12 @@ public class tester {
 
 	
 	public static void main(String[] args) {
-		password test=new password();
+		
+		
+		
+		
+		
+		
 		
 		
 		User testp=new User();
@@ -12,7 +17,7 @@ public class tester {
 		testp.setFollowers(1099);
 		testp.setTweetc(10);
 		testp.setFollowing(10);
-		
+		password test=new password();
 		//notifications test3=new notifications();
 		
 		home test2=new home();
